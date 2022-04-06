@@ -36,7 +36,7 @@ $ go install github.com/kahing/goofys
 ```
 
 # Actually working build instructions
-
+Use go 1.16
 ```
 # Create a directory for github project to download to (done in `ubuntu` user)
 mkdir -p /home/ubuntu/go/src/github.com/romilbhardwaj
