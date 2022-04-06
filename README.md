@@ -54,7 +54,7 @@ cd /home/ubuntu/go/src/github.com/romilbhardwaj/goofys
 git submodule init
 git submodule update
 
-go install /home/ubuntu/go/src/github.com/romilbhardwaj/goofys/
+go install -ldflags "-X main.Version=romilb_`git rev-parse HEAD`" /home/ubuntu/go/src/github.com/romilbhardwaj/goofys/
 
 # The goofys utility is in the bin directory for your go project space:
 
