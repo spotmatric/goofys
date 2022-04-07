@@ -27,12 +27,38 @@ $ brew cask install osxfuse
 $ brew install goofys
 ```
 
-* Or build from source with Go 1.10 or later:
+* ~Or build from source with Go 1.10 or later:~
 
 ```ShellSession
 $ export GOPATH=$HOME/work
 $ go get github.com/kahing/goofys
 $ go install github.com/kahing/goofys
+```
+# Actually working build instructions
+Use go 1.16
+```
+# Create a directory for github project to download to (done in `ubuntu` user)
+mkdir -p /home/ubuntu/go/src/github.com/romilbhardwaj
+
+# Pull project
+cd go/src/github.com/romilbhardwaj/
+git clone https://github.com/romilbhardwaj/goofys.git
+
+# Set envs
+export GOPATH=/home/ubuntu/go
+export GOOFYS_HOME=/home/ubuntu/go/src/github.com/romilbhardwaj/goofys/
+
+# populate the submodule repositories
+cd /home/ubuntu/go/src/github.com/romilbhardwaj/goofys
+git submodule init
+git submodule update
+
+go install -ldflags "-X main.Version=romilb_`git rev-parse HEAD`" /home/ubuntu/go/src/github.com/romilbhardwaj/goofys/
+
+# The goofys utility is in the bin directory for your go project space:
+
+PATH=$PATH:/home/ubuntu/go/bin; export PATH
+goofys --version
 ```
 
 # Usage
