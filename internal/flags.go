@@ -150,6 +150,18 @@ func NewApp() (app *cli.App) {
 			},
 
 			cli.StringFlag{
+				Name:  "access-key",
+				Value: "",
+				Usage: "access-key connect to s3",
+			},
+
+			cli.StringFlag{
+				Name:  "secret-key",
+				Value: "",
+				Usage: "secret-key connect to s3",
+			},
+
+			cli.StringFlag{
 				Name:  "region",
 				Value: s3Default.Region,
 				Usage: "The region to connect to. Usually this is auto-detected." +
@@ -336,6 +348,8 @@ func PopulateFlags(c *cli.Context) (ret *FlagStorage) {
 		// Common Backend Config
 		Endpoint:       c.String("endpoint"),
 		UseContentType: c.Bool("use-content-type"),
+		AccessKey:      c.String("access-key"),
+		SecretKey:      c.String("secret-key"),
 
 		// Debugging,
 		DebugFuse:  c.Bool("debug_fuse"),
@@ -353,6 +367,8 @@ func PopulateFlags(c *cli.Context) (ret *FlagStorage) {
 		}
 		config, _ := flags.Backend.(*S3Config)
 
+		config.AccessKey = c.String("access-key")
+		config.SecretKey = c.String("secret-key")
 		config.Region = c.String("region")
 		config.RegionSet = c.IsSet("region")
 		config.RequesterPays = c.Bool("requester-pays")

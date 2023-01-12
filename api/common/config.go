@@ -46,6 +46,9 @@ type FlagStorage struct {
 	// Common Backend Config
 	UseContentType bool
 	Endpoint       string
+	// ak sk by cli
+	AccessKey string
+	SecretKey string
 
 	Backend interface{}
 
