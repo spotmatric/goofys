@@ -155,7 +155,7 @@ func NewApp() (app *cli.App) {
 				Usage: "The region to connect to. Usually this is auto-detected." +
 					" Possible values: us-east-1, us-west-1, us-west-2, eu-west-1, " +
 					"eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, " +
-					"sa-east-1, cn-north-1",
+					"sa-east-1, cn-north-1, cn-northwest-1 ",
 			},
 
 			cli.BoolFlag{
